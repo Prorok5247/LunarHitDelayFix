@@ -1,0 +1,17 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'java'
+}
+
+group 'me.onils.lunarhitdelayfix'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+jar{
+    manifest{
+        attributes("Premain-Class": "me.onils.lunarhitdelayfix.Agent")
+    }
+}
