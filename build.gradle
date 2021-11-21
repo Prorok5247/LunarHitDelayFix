@@ -3,6 +3,9 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = 16
+targetCompatibility = 16
+
 group 'me.onils.lunarhitdelayfix'
 version '1.0'
 
@@ -10,8 +13,17 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation group:  'org.ow2.asm', name: 'asm', version: '9.2'
+    implementation group:  'org.ow2.asm', name: 'asm-tree', version: '9.2'
+}
+
 jar{
     manifest{
+        attributes("Agent-Class": "me.onils.lunarhitdelayfix.Agent")
         attributes("Premain-Class": "me.onils.lunarhitdelayfix.Agent")
+        attributes("Can-Retransform-Classes": true)
     }
 }
+
+build.dependsOn shadowJar
