@@ -32,7 +32,6 @@ public class Transformer implements ClassFileTransformer {
                 boolean hasString = Arrays.stream(method.instructions.toArray())
                         .filter(insn -> insn instanceof LdcInsnNode)
                         .map(insn -> ((LdcInsnNode) insn).cst)
-                        .distinct()
                         .anyMatch("Null returned as 'hitResult', this shouldn't happen!"::equals);
                 if (hasString) {
                     for(AbstractInsnNode insn : method.instructions){
