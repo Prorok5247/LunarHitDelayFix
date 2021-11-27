@@ -42,7 +42,7 @@ public class Transformer implements ClassFileTransformer {
                                 intNode.operand = 0;
                         }
                     }
-                    ClassWriter cw = new ClassWriter(0);
+                    ClassWriter cw = new ClassWriter(cr, 0);
                     cn.accept(cw);
                     return cw.toByteArray();
                 }
